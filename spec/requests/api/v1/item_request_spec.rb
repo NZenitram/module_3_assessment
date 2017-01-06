@@ -12,7 +12,10 @@ describe "items endpoint" do
       # I receive a 200 JSON response containing all items
       expect(response).to be_success
       # And each item has an id, name, description, and image_url but not the created_at or updated_at
-      # expect(page).to have_content(item1.name)
+      expect(item1.name).to eq("Test")
+      expect(item1.description).to eq("Image")
+      expect(item1.image_url).to eq("String")
+      save_and_open_page
     end
   end
 end
