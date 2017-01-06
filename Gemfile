@@ -25,4 +25,5 @@ group :development, :test do
   gem "figaro"
   gem "launchy"
   gem "capybara"
+  gem 'factory_girl_rails'
 end
