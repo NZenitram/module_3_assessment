@@ -38,7 +38,23 @@ describe "items endpoint" do
       item2 = Item.create!(name: "Test2", description: "Image", image_url: "String2")
       item3 = Item.create!(name: "Test3", description: "Image", image_url: "String3")
 
-      
+      delete "/api/v1/item/#{item1.id}"
+      expect(response).to be_success
 
+      # expect(response).to_not have_content(item1.name)
     end
+  end
+
+  context "POST an item by ID" do
+    it "can create an item" do
+      item1 = Item.create!(name: "Test", description: "Image", image_url: "String")
+
+      # When I send a POST request to `/api/v1/items` with a name, description, and image_url
+
+      post '/api/v1/items/', :name => "Test", :description => "Image", :image_url => "String"
+      expect(response).to be_success
+      # I receive a 201 JSON  response if the record is successfully created
+      # And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
+    end
+  end
 end
