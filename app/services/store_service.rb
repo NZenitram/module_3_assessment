@@ -12,11 +12,15 @@ class StoreService
     call(zip)["total"]
   end
 
+  def store_info
+    call(zip)["hours"]
+  end
+
   private
     attr_reader :zip, :call
 
   def call(zip)
-    conn = Faraday.get("https://api.bestbuy.com/v1/stores(area(#{zip},25))?format=json&show=storeType,name,city,hours,distance&pageSize=25&apiKey=7a3heu7emrjz6qbsugmepbv6")
+    conn = Faraday.get("https://api.bestbuy.com/v1/stores(area(#{zip},25))?format=json&show=storeType,name,city,hours,distance,address&pageSize=25&apiKey=7a3heu7emrjz6qbsugmepbv6")
     response = JSON.parse(conn.body, symoblize_names: true)
   end
 

@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
 
   def show
-    binding.pry
-    @store = params
+    zip = params["zip"]
+    @store = StoreService.new(zip).store_info
   end
 end
