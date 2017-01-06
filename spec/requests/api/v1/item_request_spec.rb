@@ -51,10 +51,15 @@ describe "items endpoint" do
 
       # When I send a POST request to `/api/v1/items` with a name, description, and image_url
 
-      post '/api/v1/items/', :name => "Test", :description => "Image", :image_url => "String"
-      expect(response).to be_success
+      post '/api/v1/items/', item: {:name => "Test2", :description => "Image2", :image_url => "String2" }
       # I receive a 201 JSON  response if the record is successfully created
+      expect(response).to be_success
       # And I receive a JSON response containing the id, name, description, and image_url but not the created_at or updated_at
+      item = Item.find_by(name: "Test2")
+      get "api/v1/item/#{item.id}"
+      expect(item.name).to eq("Test2")
+      expect(item.description).to eq("Image2")
+      expect(item.image_url).to eq("String2")
     end
   end
 end
