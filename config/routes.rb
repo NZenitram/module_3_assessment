@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :items,  only: [:index, :show]
   resources :orders, only: [:index, :show]
   resources :users,  only: [:index, :show]
+  resources :stores, only: [:show]
 
 
   namespace :api do
@@ -15,5 +16,6 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/search', to: "search#index"
+  get '/search', to: "search#index", as: "/search"
+
 end

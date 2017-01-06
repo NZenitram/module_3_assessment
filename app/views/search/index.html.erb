@@ -4,7 +4,7 @@
 <h2>Stores in your area:</h2>
 
 <% @list_of_stores.each do |store| %>
-  <ul>Name: <%= store["name"] %></ul>
+  <ul><h4>Name: <%= link_to store_path, store["name"] %></ul></h4>
   <ul>Store Type: <%= store["storeType"] %></ul>
   <ul>City: <%= store["city"] %></ul>
   <ul>Distance: <%= store["distance"] %></ul>
